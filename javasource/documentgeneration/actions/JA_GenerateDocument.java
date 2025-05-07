@@ -17,30 +17,39 @@ import documentgeneration.implementation.DocumentGenerator;
 
 public class JA_GenerateDocument extends CustomJavaAction<IMendixObject>
 {
-	private java.lang.String pageMicroflow;
-	private IMendixObject contextObject;
-	private java.lang.String resultEntity;
-	private java.lang.String fileName;
-	private IMendixObject __generateAsUser;
-	private system.proxies.User generateAsUser;
-	private java.lang.Boolean waitForResult;
+	private final java.lang.String pageMicroflow;
+	private final IMendixObject contextObject;
+	private final java.lang.String resultEntity;
+	private final java.lang.String fileName;
+	/** @deprecated use generateAsUser.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __generateAsUser;
+	private final system.proxies.User generateAsUser;
+	private final java.lang.Boolean waitForResult;
 
-	public JA_GenerateDocument(IContext context, java.lang.String pageMicroflow, IMendixObject contextObject, java.lang.String resultEntity, java.lang.String fileName, IMendixObject generateAsUser, java.lang.Boolean waitForResult)
+	public JA_GenerateDocument(
+		IContext context,
+		java.lang.String _pageMicroflow,
+		IMendixObject _contextObject,
+		java.lang.String _resultEntity,
+		java.lang.String _fileName,
+		IMendixObject _generateAsUser,
+		java.lang.Boolean _waitForResult
+	)
 	{
 		super(context);
-		this.pageMicroflow = pageMicroflow;
-		this.contextObject = contextObject;
-		this.resultEntity = resultEntity;
-		this.fileName = fileName;
-		this.__generateAsUser = generateAsUser;
-		this.waitForResult = waitForResult;
+		this.pageMicroflow = _pageMicroflow;
+		this.contextObject = _contextObject;
+		this.resultEntity = _resultEntity;
+		this.fileName = _fileName;
+		this.__generateAsUser = _generateAsUser;
+		this.generateAsUser = _generateAsUser == null ? null : system.proxies.User.initialize(getContext(), _generateAsUser);
+		this.waitForResult = _waitForResult;
 	}
 
 	@java.lang.Override
 	public IMendixObject executeAction() throws Exception
 	{
-		this.generateAsUser = this.__generateAsUser == null ? null : system.proxies.User.initialize(getContext(), __generateAsUser);
-
 		// BEGIN USER CODE
 		ActionValidator.validateResultEntity(resultEntity);
 		ActionValidator.validatePageMicroflow(pageMicroflow, contextObject);

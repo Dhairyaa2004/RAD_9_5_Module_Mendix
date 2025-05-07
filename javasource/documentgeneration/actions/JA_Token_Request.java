@@ -16,18 +16,24 @@ import documentgeneration.implementation.TokenManager;
 
 public class JA_Token_Request extends CustomJavaAction<IMendixObject>
 {
-	private documentgeneration.proxies.Enum_DeploymentType deploymentType;
-	private java.lang.String appId;
-	private java.lang.String personalAccessToken;
-	private java.lang.String applicationUrl;
+	private final documentgeneration.proxies.Enum_DeploymentType deploymentType;
+	private final java.lang.String appId;
+	private final java.lang.String personalAccessToken;
+	private final java.lang.String applicationUrl;
 
-	public JA_Token_Request(IContext context, java.lang.String deploymentType, java.lang.String appId, java.lang.String personalAccessToken, java.lang.String applicationUrl)
+	public JA_Token_Request(
+		IContext context,
+		java.lang.String _deploymentType,
+		java.lang.String _appId,
+		java.lang.String _personalAccessToken,
+		java.lang.String _applicationUrl
+	)
 	{
 		super(context);
-		this.deploymentType = deploymentType == null ? null : documentgeneration.proxies.Enum_DeploymentType.valueOf(deploymentType);
-		this.appId = appId;
-		this.personalAccessToken = personalAccessToken;
-		this.applicationUrl = applicationUrl;
+		this.deploymentType = _deploymentType == null ? null : documentgeneration.proxies.Enum_DeploymentType.valueOf(_deploymentType);
+		this.appId = _appId;
+		this.personalAccessToken = _personalAccessToken;
+		this.applicationUrl = _applicationUrl;
 	}
 
 	@java.lang.Override
